@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --color-foreground: #080d10;
+  --color-background: #080d10;
+
+  --color-card: #141a1f;
+
+  --color-primary: #20b2a6;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #1f2830;
+  --color-secondary-foreground: #20b2a6;
+
+  --color-muted: #252e37;
+  --color-muted-foreground: #7a8491;
+  /* --color-muted-foreground: #7ab491; */
+
+  --color-border: #242b32;
+
+  --radius: 0.75rem;
+
+  --color-highlight: #f5a623;
+  --color-surface: #1a2329;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent )
+  }
+
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    backdrop-filter: blur(10px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent )
+  }
+
+
+
+}
+
+/* تنسيق شريط التمرير للمتصفحات (Chrome, Edge, Safari) */
+/* --- تنسيق السكرول بار بناءً على ألوان الصور الرومانسية --- */
+
+@layer base {
+  /* 1. الإعدادات العامة للمتصفح */
+  ::-webkit-scrollbar {
+    width: 8px; /* عرض نحيف وأنيق */
+    height: 8px;
+  }
+
+  /* 2. الخلفية الثابتة (Track) */
+  ::-webkit-scrollbar-track {
+    background: #0d0415; /* لون البنفسجي الغامق جداً المأخوذ من خلفية صورك */
+  }
+
+  /* 3. الجزء المتحرك (Thumb) */
+  ::-webkit-scrollbar-thumb {
+    /* تدرج لوني من الوردي المحمر للبنفسجي كما في إضاءة الصور */
+    background: linear-gradient(to bottom, #ec4899, #8b5cf6); 
+    border-radius: 20px;
+    /* المسافة الوهمية ليعطي شكل الـ Floating المودرن */
+    border: 2px solid #0d0415; 
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  /* 4. التأثير عند تمرير الماوس (Hover) */
+  ::-webkit-scrollbar-thumb:hover {
+    /* تفتيح اللون عند الوقوف عليه ليعطي إحساساً بالتفاعل */
+    background: linear-gradient(to bottom, #f472b6, #a78bfa);
+  }
+
+  /* للمتصفحات مثل Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ec4899 #0d0415;
+  }
+}
+
